@@ -1,11 +1,19 @@
+
 .demo-card-wide.mdl-card {
-    width: 512px;
+    width: 25vw;
   }
   .demo-card-wide > .mdl-card__title {
     color: #fff;
     height: 176px;
-    background: url('../assets/demos/welcome_card.jpg') center / cover;
+    background: url('https://getmdl.io/assets/demos/welcome_card.jpg') center / cover;
   }
   .demo-card-wide > .mdl-card__menu {
     color: #fff;
+  }
+  .page-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
   }
