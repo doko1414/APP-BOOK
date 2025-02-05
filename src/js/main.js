@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded',async function() {
         const buttons=document.querySelectorAll(".mdl-button--colored");
         buttons.forEach(button=>{
             const title=button.parentElement.parentElement.querySelector('.mdl-card__title-text').getAttribute('data-title');
+            console.log("boton anterior"+ title)
             const description=button.parentElement.parentElement.querySelector('.mdl-card__title-text').getAttribute('data-description');
             button.addEventListener('click',()=>{
                 const quantity= +ICON_SHOPPING.getAttribute('data-badge') || 0;
@@ -66,6 +67,27 @@ document.addEventListener('DOMContentLoaded',async function() {
                 setLocalStorage('app_book_details',JSON.stringify(LISTBOOKS));//
             })
         })
+        //aplicando la web share api
+        const shareIcons=document.querySelectorAll('.mdl-button--icon');
+        shareIcons.forEach(shareIcon=>{
+          const title= shareIcon.parentElement.parentElement.querySelector(".mdl-card__title-text").getAttribute('data-title');
+          const description=shareIcon.parentElement.parentElement.querySelector(".mdl-card__title-text").getAttribute('data-description');
+          const shareObjet={
+            title:title,
+            description:description,
+            url: ""
+          };
+          shareIcon.addEventListener("click", async ()=>{
+            try {
+              await navigator.share(shareObjet);
+              console.log("MDN shared successfully");
+            } catch (err) {
+              alert(`Error: ${err}`);
+            }
+          })
+        })
+        
+
 });
 /*
           
